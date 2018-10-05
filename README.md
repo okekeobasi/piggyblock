@@ -14,11 +14,11 @@ built with python, js and solidity
 ## React Tasks
 
 ### Create a Pool Interface
-* * number of users
-* * public/private pool
-* * name of pool
-* * intervals
-* * amount
+* number of users
+* public/private pool
+* name of pool
+* intervals
+* amount
 
 ### Join a Pool
 
