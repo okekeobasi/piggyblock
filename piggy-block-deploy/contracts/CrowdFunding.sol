@@ -86,7 +86,28 @@ contract CrowdFunder {
         crowdfundings[index].my_length++;
         return crowdfundings[index].my_length - 1;
     }
-
+    function checkIfFundingCompleteOrExpired (uint index){
+        // cfd = crowdfundings[index];
+        if (crowdfundings[index].totalRaised > crowdfundings[index].minimumToRaise){
+            crowdfundings[index].state = State.Successful;
+            payOut(index);
+        } else if (now > crowdfundings[index].endFundRaising){
+            crowdfundings[index].state = State.ExpiredRefund;
+        }
+        crowdfundings[index].completeAt = now;
+        
+    }
+        
+    function payOut(uint index) {
+        // cfd = crowdfundings[index];
+        address fundRecipient = crowdfundings[index].fundRecipient;
+        if(!fundRecipient.send(this.balance)){
+            throw;
+        }
+        crowdfundings[index].state = State.Closed;
+        crowdfundings[index].currentBalance = 0;
+    }
+    
 
 
     }
