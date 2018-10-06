@@ -7,7 +7,6 @@ contract CrowdFunder {
     address public fundRecipient; // creator may be different than recipient
     uint public minimumToRaise; // required to reach at least this much, else everyone gets refund
     string campaignUrl; 
-    // byte constant version = 1;
 
    // State variables
     State public state = State.Fundraising; // initialize on create
@@ -52,9 +51,7 @@ contract CrowdFunder {
         string _campaignUrl,
         address _fundRecipient,
         uint _minimumToRaise
-        )
-        {
-        
+        ){
         CrowdFunding memory new_crowd_funding = CrowdFunding({
             creator: msg.sender,
             timeInHoursForFundraising: _timeInHoursForFundraising,
@@ -69,7 +66,6 @@ contract CrowdFunder {
             
         });
         crowdfundings.push(new_crowd_funding);
-
         }
 
     function CrowdFunder(){
@@ -77,19 +73,18 @@ contract CrowdFunder {
     
    
 
-    function contribute(uint index)
-    public payable returns (uint256)
-    {
-      Contribution memory new_contribution =  Contribution({
+    function contribute(uint index) public payable returns (uint256)
+    {  
+                      
+        Contribution memory new_contribution = Contribution({
             amount: msg.value,
             contributor: msg.sender
         });
-                
-        crowdfundings[index].contributions[crowdfundings[index].my_length]= new_contribution;
+        crowdfundings[index].contributions[crowdfundings[index].my_length] = new_contribution;
         crowdfundings[index].totalRaised += msg.value;
         crowdfundings[index].currentBalance = totalRaised;
         crowdfundings[index].my_length++;
-        return crowdfundings[index].my_length - 1; // return id
+        return crowdfundings[index].my_length - 1;
     }
 
 
