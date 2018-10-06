@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+td{
+  cursor: pointer;
+}
+
 .landingHeader{
   /* background-image: url('static/images/bg2.jpg'); */
 }

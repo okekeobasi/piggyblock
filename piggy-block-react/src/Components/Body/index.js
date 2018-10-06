@@ -6,7 +6,7 @@ import CampaignLists from './campaing_list';
 
 const Body = (props) => {   
     const campaignItems = props.campaigns.map((campaign) => {
-        return <CampaignLists campaignItem={campaign} />
+        return <CampaignLists campaignItem={campaign} launchClient={props.launchClient} />
     });
 
     return(

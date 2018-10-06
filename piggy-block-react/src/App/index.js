@@ -12,9 +12,11 @@ class App extends Component{
         super(props);
         
         this.changeComponents = this.changeComponents.bind(this);
+        this.launchClient = this.launchClient.bind(this);
         this.state={
             appName: 'Piggyblock',
             landing: true,
+            client: false,
             campaigns: [
                 {id: 1, url: 'tega023@gmail.com', ammount: 5.232233, contributors: 200},
                 {id: 2, url: 'oseiyoke@icloud.com', ammount: 8.000331, contributors: 650}
@@ -26,8 +28,18 @@ class App extends Component{
         this.state.landing ? (
             this.setState({landing: false})
         ) : (
-            this.setState({landing: true})
+            this.setState({landing: true, client: false})
         )
+    }
+
+    launchClient(){
+        /*
+        this.state.client ? (
+            this.setState({client: false})
+        ) : (
+            this.setState({client: true, landing: false})
+        )
+        */
     }
 
     render(){
@@ -38,7 +50,7 @@ class App extends Component{
                     this.state.landing ? 
                     <div>
                         <Landing appName={this.state.appName} campaigns={this.state.campaigns} 
-                        changeComponents={this.changeComponents.bind(this)}/> 
+                        changeComponents={this.changeComponents.bind(this)} launchClient={this.launchClient.bind(this)} /> 
                         <p style={{textAlign: 'center'}}>
                             <Button bsStyle="primary" bsSize="large" onClick={this.changeComponents}>Start a Campaign</Button>
                         </p>
