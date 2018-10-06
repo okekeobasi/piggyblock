@@ -14,7 +14,7 @@ class App extends Component{
         this.changeComponents = this.changeComponents.bind(this);
         this.launchClient = this.launchClient.bind(this);
         this.state={
-            appName: 'Piggyblock',
+            appName: 'PokaBlock',
             landing: true,
             client: false,
             campaigns: [
@@ -33,13 +33,7 @@ class App extends Component{
     }
 
     launchClient(){
-        /*
-        this.state.client ? (
-            this.setState({client: false})
-        ) : (
-            this.setState({client: true, landing: false})
-        )
-        */
+        //
     }
 
     render(){
@@ -50,7 +44,7 @@ class App extends Component{
                     this.state.landing ? 
                     <div>
                         <Landing appName={this.state.appName} campaigns={this.state.campaigns} 
-                        changeComponents={this.changeComponents.bind(this)} launchClient={this.launchClient.bind(this)} /> 
+                        changeComponents={this.changeComponents.bind(this)} /> 
                         <p style={{textAlign: 'center'}}>
                             <Button bsStyle="primary" bsSize="large" onClick={this.changeComponents}>Start a Campaign</Button>
                         </p>

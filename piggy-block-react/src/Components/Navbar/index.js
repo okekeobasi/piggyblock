@@ -9,14 +9,14 @@ class NavBar extends Component{
             <Navbar fixedTop={true}>
                 <Navbar.Header>
                 <Navbar.Brand>
-                    <a onClick={this.props.changeComponents}>{this.props.appName}</a>
+                    <a style={{cursor: 'pointer'}} onClick={this.props.changeComponents}>{this.props.appName}</a>
                 </Navbar.Brand>
                 <Nav>
                     <NavDropdown title="Our Services" id="basic-nav-dropdown">
                         <MenuItem>Crowdsourcing</MenuItem>
                         <MenuItem divider />
-                        <MenuItem disabled>Eyowo</MenuItem>
-                        <MenuItem disabled>Gambling</MenuItem>
+                        <MenuItem disabled>Loans</MenuItem>
+                        <MenuItem disabled>PokaPool</MenuItem>
                     </NavDropdown>
                 </Nav>
                 <Navbar.Toggle />
