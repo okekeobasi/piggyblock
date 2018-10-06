@@ -107,7 +107,33 @@ contract CrowdFunder {
         crowdfundings[index].state = State.Closed;
         crowdfundings[index].currentBalance = 0;
     }
-    
+    function getRefund(uint256 id, uint index) public returns (bool)
+    {   
+        
+        CrowdFunding cfd = crowdfundings[index];
+        if (cfd.state != State.ExpiredRefund){
+            throw;
+        }
+        if (cfd.my_length <= id || id < 0 || cfd.contributions[id].amount == 0 ) {
+            throw;
+        }
+
+        uint amountToRefund = cfd.contributions[id].amount;
+        cfd.contributions[id].amount = 0;
+
+        address  contributor = cfd.contributions[id].contributor;
+        
+        if(contributor.send(amountToRefund)) {
+            cfd.contributions[id].amount = amountToRefund;
+            return false;
+        }
+        else{
+            cfd.totalRaised -= amountToRefund;
+            cfd.currentBalance = cfd.totalRaised;
+        }
+
+        return true;
+    }
 
 
     }
